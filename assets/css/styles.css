@@ -1,0 +1,915 @@
+/* ==========================================================================
+   SSL BELLAGIO - OFFICIAL BRAND & RESPONSIVE DESIGN SYSTEM
+   Theme: Royal Burgundy / Deep Wine (#250f14), Champagne Gold (#c59b27),
+   Terracotta/Coral Accent (#ea5623), Warm Ivory (#fdfbf7), and Deep Charcoal (#231f20).
+   Fully Responsive: Mobile (320px+), Tablet (768px+), Desktop (1024px+), 4K.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  
+  /* Brand Signature Colors */
+  --color-wine-darkest: #16070a;
+  --color-wine-900: #250f14;   /* Signature SSL Bellagio Brochure Wine */
+  --color-wine-800: #33131b;
+  --color-wine-700: #4a1c28;
+  --color-wine-500: #6d2839;
+  
+  --color-gold-100: #fbf5df;
+  --color-gold-300: #e8cf80;
+  --color-gold-400: #dfb76c;
+  --color-gold-500: #c59b27;
+  --color-gold-600: #9e7817;
+  
+  --color-terracotta: #ea5623; /* Ad creative highlight color */
+  --color-terracotta-hover: #d24615;
+  
+  --color-ai-cyan: #0284c7;
+  --color-ai-glow: rgba(2, 132, 199, 0.25);
+  
+  --color-ivory-50: #fdfbf7;
+  --color-ivory-100: #f7f4ed;
+  --color-charcoal-900: #231f20; /* Logo Charcoal */
+  --color-charcoal-800: #332d2f;
+  --color-charcoal-600: #665e60;
+  
+  --border-gold-subtle: rgba(212, 175, 55, 0.25);
+  --border-wine-subtle: rgba(74, 28, 40, 0.2);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-wine-900);
+  color: var(--color-charcoal-900);
+  overflow-x: clip;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+  line-height: 1.6;
+  width: 100%;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #18080b;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-wine-700);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* Hide scrollbar utility for mobile swiper tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Typography Helpers */
+.font-cinzel {
+  font-family: var(--font-heading);
+}
+.font-mono-tech {
+  font-family: var(--font-mono);
+}
+
+/* Color & Gradient Utilities */
+.text-wine-brand {
+  color: var(--color-wine-900);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fdf8e2 0%, #e2be59 45%, #c59b27 80%, #fdf8e2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-wine-gold-gradient {
+  background: linear-gradient(135deg, #dfb76c 0%, #ffffff 50%, #dfb76c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-wine-900 {
+  background-color: var(--color-wine-900);
+}
+
+.bg-wine-800 {
+  background-color: var(--color-wine-800);
+}
+
+.bg-wine-gradient {
+  background: linear-gradient(145deg, #250f14 0%, #1a080c 100%);
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #e5b842 0%, #c59b27 50%, #9e7817 100%);
+}
+
+.bg-terracotta {
+  background-color: var(--color-terracotta);
+}
+
+.bg-terracotta:hover {
+  background-color: var(--color-terracotta-hover);
+}
+
+.bg-terracotta-gradient {
+  background: linear-gradient(135deg, #ea5623 0%, #d44310 100%);
+}
+
+/* Badges */
+.badge-rera {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #f3d38c;
+}
+
+.badge-wine {
+  background: rgba(37, 15, 20, 0.08);
+  border: 1px solid rgba(74, 28, 40, 0.25);
+  color: #33131b;
+}
+
+.badge-ai {
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(2, 132, 199, 0.35);
+  color: #0284c7;
+}
+
+.badge-limited {
+  background: rgba(234, 86, 35, 0.12);
+  border: 1px solid rgba(234, 86, 35, 0.4);
+  color: #ea5623;
+}
+
+/* Card Styling */
+.wine-card {
+  background: rgba(37, 15, 20, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.ivory-card {
+  background: #ffffff;
+  border: 1px solid #e8e2d5;
+  box-shadow: 0 4px 20px -2px rgba(35, 31, 32, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ivory-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold-400);
+    box-shadow: 0 14px 35px -8px rgba(37, 15, 20, 0.12);
+  }
+}
+
+/* Hero Background styling */
+.hero-wine-overlay {
+  background: linear-gradient(180deg, 
+    rgba(22, 7, 10, 0.82) 0%, 
+    rgba(37, 15, 20, 0.90) 65%, 
+    rgba(37, 15, 20, 1) 100%
+  );
+}
+
+/* Glow effects */
+.glow-gold {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.glow-terracotta {
+  box-shadow: 0 6px 20px rgba(234, 86, 35, 0.35);
+}
+
+/* Range input styling for EMI calculator */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e2ddd3;
+  border-radius: 4px;
+  outline: none;
+  touch-action: pan-y;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-wine-900);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(37, 15, 20, 0.4);
+  border: 2px solid var(--color-gold-400);
+  transition: all 0.2s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: var(--color-terracotta);
+}
+
+/* Modal styling */
+.modal-backdrop {
+  background-color: rgba(18, 6, 9, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Mobile bottom bar with safe area padding */
+.mobile-bottom-bar {
+  box-shadow: 0 -4px 20px rgba(18, 6, 9, 0.4);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+}
+
+/* Tabs */
+.plan-tab-btn.active {
+  background: var(--color-wine-900);
+  color: #ffffff;
+  border-color: var(--color-gold-400);
+  box-shadow: 0 4px 15px rgba(37, 15, 20, 0.25);
+}
+
+/* Image zoom container */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .img-zoom-container:hover img {
+    transform: scale(1.05);
+  }
+}
+
+/* Prevent auto-zoom on iOS inputs when focused */
+@media screen and (max-width: 640px) {
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile drawer animation */
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Smooth touch momentum scrolling on iOS */
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better tap targets on mobile */
+button, a {
+  touch-action: manipulation;
+}
+
+/* ==========================================================================
+   GATED CONTENT & PHONE VALIDATION STYLES (REAL ESTATE BEST PRACTICE)
+   ========================================================================== */
+
+/* Locked Floor Plan container */
+.gated-plan-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.gated-plan-img.is-locked {
+  filter: blur(14px) brightness(0.9);
+  transform: scale(1.02);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s ease;
+}
+
+.gated-plan-img.is-unlocked {
+  filter: blur(0px) brightness(1);
+  transform: scale(1);
+  pointer-events: auto;
+  user-select: auto;
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s ease;
+}
+
+.gated-plan-overlay {
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.gated-plan-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Phone validation styles */
+.input-phone-invalid {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 0 0 1px #ef4444 !important;
+}
+
+.dark .input-phone-invalid,
+.bg-wine-900 .input-phone-invalid,
+.bg-wine-950 .input-phone-invalid {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border-color: #ef4444 !important;
+}
+
+.input-phone-valid {
+  border-color: #10b981 !important;
+  background-color: #f0fdf4 !important;
+}
+
+.dark .input-phone-valid,
+.bg-wine-900 .input-phone-valid,
+.bg-wine-950 .input-phone-valid {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border-color: #10b981 !important;
+}
+
+.phone-error-msg {
+  display: none;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #ef4444;
+  margin-top: 4px;
+  font-weight: 600;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.phone-error-msg.visible {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+.shake-animation {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Gated Price Pulse */
+.gated-lock-pill {
+  animation: pulse-subtle 2.5s infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(0.98); }
+}
+
+/* ==========================================================================
+   21ST.DEV COMPONENT SUITE: BENTO GRIDS, SPOTLIGHTS & CINEMATIC SHOWCASE
+   ========================================================================== */
+
+/* 21st.dev Bento Card Base */
+.bento-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgba(22, 7, 10, 0.75);
+  border: 1px solid rgba(223, 183, 108, 0.18);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(223, 183, 108, 0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(22, 7, 10, 0.8), 0 0 30px rgba(197, 155, 39, 0.15);
+}
+
+/* Spotlight mouse tracker overlay */
+.bento-spotlight {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(223, 183, 108, 0.15), transparent 40%);
+}
+
+.bento-card:hover .bento-spotlight {
+  opacity: 1;
+}
+
+/* Active Category Filter Pill */
+.amenity-filter-btn.active {
+  background: linear-gradient(135deg, #ea5623 0%, #c59b27 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(234, 86, 35, 0.35);
+}
+
+/* 21st.dev Video Player Backlight Bloom */
+.video-glow-backlight {
+  position: absolute;
+  inset: -15px;
+  background: linear-gradient(135deg, rgba(197, 155, 39, 0.25) 0%, rgba(234, 86, 35, 0.3) 50%, rgba(2, 132, 199, 0.25) 100%);
+  filter: blur(40px);
+  border-radius: 2.5rem;
+  z-index: 0;
+  opacity: 0.75;
+  transition: opacity 0.4s ease;
+}
+
+/* Custom Play Button Ripple */
+.play-ripple-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  border: 2px solid rgba(234, 86, 35, 0.6);
+  animation: ripple 2.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.play-ripple-ring:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.9); opacity: 0.9; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+/* Interactive Timeline Jump Pills */
+.video-jump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(22, 7, 10, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #e2ddd3;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.video-jump-btn:hover,
+.video-jump-btn.active {
+  background: rgba(197, 155, 39, 0.2);
+  border-color: #c59b27;
+  color: #fdf8e2;
+  transform: translateY(-2px);
+}
+
+/* Infinite Marquee Ticker for 22+ Township Amenities */
+.amenities-marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  gap: 1.5rem;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.amenities-marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  animation: marquee 28s linear infinite;
+}
+
+.amenities-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Glassmorphism Badge */
+.glass-pill {
+  background: rgba(22, 7, 10, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(223, 183, 108, 0.3);
+}
+
+/* ==========================================================================
+   21ST.DEV AI LIVING & SMART HOME SHOWCASE SUITE
+   ========================================================================== */
+
+/* 21st.dev Border Beam Animation */
+.border-beam-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-beam-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(223, 183, 108, 0.8) 50%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: border-beam-run 6s linear infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes border-beam-run {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Radar Sweep Animation for 3-Tier Security */
+.radar-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-sweep::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  background: conic-gradient(from 0deg, rgba(2, 132, 199, 0.35) 0deg, transparent 60deg);
+  animation: radar-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Live Smart Home Simulation Controls */
+.sim-switch {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sim-switch:active {
+  transform: scale(0.96);
+}
+
+.sim-scene-btn.active {
+  background: linear-gradient(135deg, rgba(197, 155, 39, 0.35), rgba(234, 86, 35, 0.35));
+  border-color: #dfb76c;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(223, 183, 108, 0.3);
+}
+
+/* AC Cool Breeze Flow Animation */
+.breeze-particle {
+  animation: breeze-drift 3s ease-in-out infinite alternate;
+}
+
+@keyframes breeze-drift {
+  0% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-4px) scale(1.05); opacity: 0.8; }
+  100% { transform: translateY(2px) scale(0.98); opacity: 0.5; }
+}
+
+/* Status Indicator Pulse */
+.pulse-emerald {
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: emerald-pulse 2s infinite;
+}
+
+@keyframes emerald-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* ==========================================================================
+   LUXURY BRAND THEME: FLATPICKR DATE PICKER
+   ========================================================================== */
+.flatpickr-calendar {
+  background: #16070a !important;
+  border: 1px solid rgba(223, 183, 108, 0.4) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 25px rgba(197, 155, 39, 0.15) !important;
+  color: #fff !important;
+  font-family: inherit !important;
+  padding: 10px !important;
+  z-index: 99999 !important;
+}
+
+.flatpickr-calendar.arrowTop::before,
+.flatpickr-calendar.arrowTop::after {
+  border-bottom-color: #16070a !important;
+}
+.flatpickr-calendar.arrowBottom::before,
+.flatpickr-calendar.arrowBottom::after {
+  border-top-color: #16070a !important;
+}
+
+.flatpickr-months {
+  background: transparent !important;
+  padding: 6px 0 !important;
+  border-bottom: 1px solid rgba(223, 183, 108, 0.15) !important;
+}
+
+.flatpickr-months .flatpickr-month {
+  color: #fff !important;
+  fill: #dfb76c !important;
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700 !important;
+}
+
+.flatpickr-current-month {
+  font-size: 110% !important;
+  padding: 4px 0 0 0 !important;
+  color: #dfb76c !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  color: #fff !important;
+  background: #16070a !important;
+  font-weight: 700 !important;
+}
+
+.flatpickr-current-month input.cur-year {
+  color: #dfb76c !important;
+  font-weight: 700 !important;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  color: #dfb76c !important;
+  fill: #dfb76c !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+  background: rgba(197, 155, 39, 0.2) !important;
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+span.flatpickr-weekday {
+  color: #dfb76c !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.flatpickr-day {
+  color: #e2ddd3 !important;
+  border-radius: 10px !important;
+  border-color: transparent !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  height: 38px !important;
+  line-height: 38px !important;
+}
+
+.flatpickr-day:hover {
+  background: rgba(197, 155, 39, 0.25) !important;
+  border-color: #dfb76c !important;
+  color: #fff !important;
+}
+
+.flatpickr-day.today {
+  border-color: #dfb76c !important;
+  background: rgba(197, 155, 39, 0.12) !important;
+  color: #dfb76c !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: linear-gradient(135deg, #ea5623 0%, #d44310 100%) !important;
+  border-color: #ea5623 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(234, 86, 35, 0.45) !important;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: rgba(255, 255, 255, 0.2) !important;
+  background: transparent !important;
+  cursor: not-allowed !important;
+}
+
+/* Quick date selection chips */
+.quick-date-btn {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.quick-date-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   STICKY HEADER SUITE
+   ========================================================================== */
+#sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#top-ticker {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#navbar {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#sticky-header.is-scrolled #navbar {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -10px rgba(37, 15, 20, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(223, 183, 108, 0.4);
+}
+
+#sticky-header.is-scrolled .navbar-inner {
+  height: 4rem; /* 64px on desktop when scrolled */
+}
+
+@media (max-width: 640px) {
+  #sticky-header.is-scrolled #top-ticker {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom-width: 0;
+    overflow: hidden;
+  }
+}
+
+/* ==========================================================================
+   MOBILE APP VIEW DESIGN SUITE (FOR SMARTPHONES & DEVTOOLS MOBILE EMULATION)
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  /* 1. Native Mobile App Header */
+  #navbar .navbar-inner {
+    height: 3.5rem !important; /* 56px native app bar */
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  /* 2. Mobile App Quick Category Stories/Pill Bar */
+  .mobile-app-pills-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0.75rem;
+    background: #16070a;
+    border-bottom: 1px solid rgba(223, 183, 108, 0.25);
+  }
+
+  .mobile-app-pill {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-app-pill:active {
+    transform: scale(0.94);
+  }
+
+  /* 3. Mobile Hero App Snap Carousel */
+  .mobile-snap-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 0.625rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .mobile-snap-carousel > * {
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    width: 68% !important;
+  }
+
+  /* 4. Native App Bottom Sheet Modals */
+  .app-modal {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .app-modal > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 1.75rem !important;
+    border-top-right-radius: 1.75rem !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    max-height: 86dvh !important;
+    padding-top: 1rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-bottom: max(1.75rem, env(safe-area-inset-bottom, 24px)) !important;
+    animation: slide-up-bottom-sheet 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  @keyframes slide-up-bottom-sheet {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  /* App Drag Handle Bar */
+  .app-sheet-handle {
+    width: 2.75rem;
+    height: 0.25rem;
+    background-color: rgba(223, 183, 108, 0.45);
+    border-radius: 9999px;
+    margin: 0 auto 0.75rem auto;
+  }
+
+  /* 5. Mobile App Floating Bottom Island Dock */
+  .mobile-app-dock {
+    box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.9), 0 0 20px rgba(197, 155, 39, 0.2);
+    padding-bottom: max(0.375rem, env(safe-area-inset-bottom, 8px));
+  }
+
+  /* App tap effect on all interactive elements */
+  .app-tap-effect:active {
+    transform: scale(0.95);
+  }
+}
+
+
+
+
+
+
