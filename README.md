@@ -88,3 +88,6 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 - **Location:** Opp. Sagaon Metro Station, MIDC Residential Phase 2, Dombivli East, Maharashtra 421203
 - **Configurations:** 1 BHK (429 – 463 sq. ft.) | 2 BHK (584 – 601 sq. ft.) | Commercial & Retail
 - **MahaRERA No.:** PM1330002600001 (Portal: [maharera.mahaonline.gov.in](https://maharera.mahaonline.gov.in))
+- **Direct Sales Hotline:** +91 88505 74004
+- **WhatsApp Support & Leads:** [+91 88505 74004](https://wa.me/918850574004)
+- **Official Enquiries Email:** [ssl.bellagio1@gmail.com](mailto:ssl.bellagio1@gmail.com)

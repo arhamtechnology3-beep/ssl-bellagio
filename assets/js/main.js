@@ -524,14 +524,30 @@ function initLeadForms() {
         visitDate: formData.get('visitDate') || '',
         needCab: formData.get('needCab') ? 'Yes' : 'No',
         source: form.getAttribute('data-source') || 'Landing Page Form',
+        destinationEmail: 'ssl.bellagio1@gmail.com',
+        destinationPhone: '8850574004',
         timestamp: new Date().toISOString()
       };
+
+      // Construct instant WhatsApp lead message for 88505 74004
+      const waLeadMsg = `*New Lead Enquiry - SSL Bellagio*%0A` +
+        `👤 *Name:* ${encodeURIComponent(leadData.name)}%0A` +
+        `📞 *Mobile:* %2B91%20${encodeURIComponent(leadData.phone)}%0A` +
+        (leadData.email ? `✉️ *Email:* ${encodeURIComponent(leadData.email)}%0A` : '') +
+        `🏠 *Configuration:* ${encodeURIComponent(leadData.configuration)}%0A` +
+        (leadData.visitDate ? `📅 *Preferred Visit Date:* ${encodeURIComponent(leadData.visitDate)}%0A` : '') +
+        `🚗 *Free Cab Facility:* ${encodeURIComponent(leadData.needCab)}%0A` +
+        `📍 *Source:* ${encodeURIComponent(leadData.source)}%0A` +
+        `⏰ *Time:* ${encodeURIComponent(new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }))}`;
+
+      const waLeadUrl = `https://wa.me/918850574004?text=${waLeadMsg}`;
 
       // Save lead locally
       try {
         const storedLeads = JSON.parse(localStorage.getItem('ssl_bellagio_leads') || '[]');
         storedLeads.push(leadData);
         localStorage.setItem('ssl_bellagio_leads', JSON.stringify(storedLeads));
+        console.log('Lead captured for 88505 74004 & ssl.bellagio1@gmail.com:', leadData);
       } catch (err) {
         console.warn('LocalStorage lead error:', err);
       }
@@ -540,7 +556,7 @@ function initLeadForms() {
       localStorage.setItem('ssl_bellagio_unlocked', 'true');
       revealAllGatedContent(true);
 
-      // Simulate network response
+      // Simulate network response & present lead confirmation
       setTimeout(() => {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -558,6 +574,14 @@ function initLeadForms() {
           if (leadNameEl && leadData.name) {
             leadNameEl.textContent = leadData.name;
           }
+
+          // Direct lead recipient button on WhatsApp
+          const waSuccessBtn = document.getElementById('success-whatsapp-btn');
+          if (waSuccessBtn) {
+            waSuccessBtn.href = waLeadUrl;
+            waSuccessBtn.innerHTML = `<i class="fa-brands fa-whatsapp text-base"></i> Send Enquiry to Sales Desk (+91 88505 74004)`;
+          }
+
           successModal.classList.remove('hidden');
           document.body.classList.add('overflow-hidden');
         }
@@ -571,6 +595,13 @@ function initLeadForms() {
           document.body.appendChild(downloadLink);
           downloadLink.click();
           downloadLink.remove();
+        }
+
+        // Auto-launch WhatsApp lead transmission in background tab
+        try {
+          window.open(waLeadUrl, '_blank');
+        } catch (e) {
+          // Popup blocked, user can click the button in success modal
         }
 
         form.reset();
