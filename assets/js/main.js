@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoShowcase();
   initSmartHomeSimulator();
   initDatePickers();
+  initCounterEffect();
 });
 
 // 1. NAVBAR & SCROLL BEHAVIOR
@@ -974,6 +975,78 @@ function initDatePickers() {
   });
 }
 
+// 15. LUXURY ANIMATED STAT COUNTER EFFECT
+function initCounterEffect() {
+  const counterElements = document.querySelectorAll('.stat-counter');
+  if (!counterElements.length) return;
 
+  const animateCounter = (el) => {
+    if (el.getAttribute('data-has-animated') === 'true') return;
+    el.setAttribute('data-has-animated', 'true');
+    el.classList.add('counting');
 
+    const targetVal = parseFloat(el.getAttribute('data-counter') || '0');
+    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = parseInt(el.getAttribute('data-duration') || '1800', 10); // ms
+    const startTime = performance.now();
 
+    const formatNumber = (val) => {
+      if (decimals > 0) {
+        return val.toFixed(decimals);
+      }
+      return Math.round(val).toLocaleString('en-IN');
+    };
+
+    const updateCount = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Luxury easeOutExpo curve: fast energetic ramp that smoothly settles into place
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentVal = easeProgress * targetVal;
+
+      el.textContent = `${prefix}${formatNumber(currentVal)}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        el.textContent = `${prefix}${formatNumber(targetVal)}${suffix}`;
+        el.classList.remove('counting');
+        el.classList.add('counted');
+      }
+    };
+
+    requestAnimationFrame(updateCount);
+  };
+
+  // Setup IntersectionObserver to trigger counter when section scrolls into view
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const targets = entry.target.querySelectorAll ? entry.target.querySelectorAll('.stat-counter') : [];
+          if (targets.length) {
+            targets.forEach(c => animateCounter(c));
+          }
+          if (entry.target.classList && entry.target.classList.contains('stat-counter')) {
+            animateCounter(entry.target);
+          }
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    // Observe counter containers as well as direct counters
+    document.querySelectorAll('.stat-counter-container, .stat-counter, #developer-stats').forEach(el => {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback for older browsers
+    counterElements.forEach(animateCounter);
+  }
+}
